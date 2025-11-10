@@ -1,3 +1,4 @@
 * 1:51 
 * 2:02 before isAuth.js
- 
+* 2:24 before Redux
+* 2:54 before custom hooks
