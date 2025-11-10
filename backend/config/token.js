@@ -7,7 +7,7 @@ const genToken = async (userId) => {
     });
     return token;
   } catch (error) {
-    console.error('Error generating token:', error);
+    console.log('gen token error');
   }
 };
 

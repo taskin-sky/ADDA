@@ -2,25 +2,23 @@ import genToken from '../config/token.js';
 import User from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 
-// User Registration [Sign Up]
 export const signUp = async (req, res) => {
   try {
     const { userName, email, password } = req.body;
-
     const checkUserByUserName = await User.findOne({ userName });
     if (checkUserByUserName) {
-      return res.status(400).json({ message: 'Username already exists' });
+      return res.status(400).json({ message: 'userName already exist' });
     }
 
     const checkUserByEmail = await User.findOne({ email });
     if (checkUserByEmail) {
-      return res.status(400).json({ message: 'Email already exists' });
+      return res.status(400).json({ message: 'email already exist' });
     }
 
     if (password.length < 6) {
       return res
         .status(400)
-        .json({ message: 'Password must be at least 6 characters' });
+        .json({ message: 'password must be at least 6 characters ' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -35,9 +33,9 @@ export const signUp = async (req, res) => {
 
     res.cookie('token', token, {
       httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       sameSite: 'None',
-      secure: false, // Set to true if using HTTPS
+      secure: false, //When deploy it should true
     });
 
     return res.status(201).json(user);
@@ -46,14 +44,13 @@ export const signUp = async (req, res) => {
   }
 };
 
-// User Login [Sign In]
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'user does not exist' });
+      return res.status(400).json({ message: 'email dose not exist' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -65,9 +62,9 @@ export const login = async (req, res) => {
 
     res.cookie('token', token, {
       httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       sameSite: 'None',
-      secure: false, // Set to true if using HTTPS
+      secure: false, //When deploy it should true
     });
 
     return res.status(200).json(user);
@@ -76,11 +73,10 @@ export const login = async (req, res) => {
   }
 };
 
-// User Logout [Sign Out]
 export const logOut = async (req, res) => {
   try {
     res.clearCookie('token');
-    return res.status(200).json({ message: 'Successfully logged out' });
+    return res.status(200).json({ message: 'log out successfully' });
   } catch (error) {
     return res.status(500).json({ message: `logout error ${error}` });
   }
