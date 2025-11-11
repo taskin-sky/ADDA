@@ -57,14 +57,14 @@ function SignUp() {
           <input
             type="text"
             placeholder="username"
-            className="w-[90%] h-[50px] outline-none border-2 border-[#20c7ff] px-[20px] py-[10px] bg-white rounded-lg shadow-gray-200 shadow-lg"
+            className="w-[90%] h-[50px] outline-none border-2 border-[#20c7ff] px-[20px] py-[10px] bg-white rounded-lg shadow-gray-200 shadow-lg text-gray-700 text-[19px]"
             onChange={(e) => setUserName(e.target.value)}
             value={userName}
           />
           <input
             type="email"
             placeholder="email"
-            className="w-[90%] h-[50px] outline-none border-2 border-[#20c7ff] px-[20px] py-[10px] bg-white rounded-lg shadow-gray-200 shadow-lg"
+            className="w-[90%] h-[50px] outline-none border-2 border-[#20c7ff] px-[20px] py-[10px] bg-white rounded-lg shadow-gray-200 shadow-lg text-gray-700 text-[19px]"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
@@ -72,7 +72,7 @@ function SignUp() {
             <input
               type={`${show ? 'text' : 'password'}`}
               placeholder="password"
-              className="w-full h-full outline-none  px-[20px] py-[10px] bg-white  "
+              className="w-full h-full outline-none px-[20px] py-[10px] bg-white text-gray-700 text-[19px]"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />

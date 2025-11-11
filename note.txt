@@ -3,3 +3,5 @@
 * 2:24 before Redux
 * 2:54 before custom hooks
 * 3:03 error in getCurrentData.jsx [error solved]
+* 3:10 home and profile route setup
+* 3:26 profile | before profile page controller
